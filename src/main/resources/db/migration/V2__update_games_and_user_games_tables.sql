@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS user_game;
+
+DROP TABLE IF EXISTS games;
+
+CREATE TABLE games (
+  id UUID PRIMARY KEY,
+  round BIGINT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 4. Create the User_Game junction table
+CREATE TABLE user_game (
+  user_id BIGINT NOT NULL,
+  game_id UUID NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT pk_user_game PRIMARY KEY (user_id, game_id),
+  CONSTRAINT fk_user_game_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  CONSTRAINT fk_user_game_game FOREIGN KEY (game_id) REFERENCES games (id) ON DELETE CASCADE
+);
