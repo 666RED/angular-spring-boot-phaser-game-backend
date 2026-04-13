@@ -23,4 +23,14 @@ public class UserServiceImpl implements UserService {
 
     return userMapper.toDto(user);
   }
+
+  @Override
+  public UserDto getUserByEmail(String email) {
+    User user =
+        userRepository
+            .findByEmail(email)
+            .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+    return userMapper.toDto(user);
+  }
 }

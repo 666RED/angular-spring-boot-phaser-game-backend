@@ -9,7 +9,7 @@ source ../game-api.sh
 # create_game
 
 ### Get Game ###
-# get_game ac050240-5ab3-48bb-8714-1515d6aeea63
+# get_game 4136b223-f6fe-480f-8fef-630e9e8e594d
 
 ### Join Game ###
-# join_game d5bb7a71-86de-47e2-99f7-8331f158c043
+join_game 4136b223-f6fe-480f-8fef-630e9e8e594d

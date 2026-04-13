@@ -12,7 +12,15 @@ login() {
 	local url="$AUTH_URL/login"
 	data=$1
 
-	request "$method" "$url" "$data"
+	login_request_cookie "$method" "$url" "$data"
+}
+
+login_as_second_user() {
+	local method=POST
+	local url="$AUTH_URL/login"
+	data=$1
+
+	login_request_cookie "$method" "$url" "$data" "cookies2.txt"
 }
 
 register() {
@@ -20,5 +28,5 @@ register() {
 	local url="$AUTH_URL/register"
 	data=$1
 
-	request "$method" "$url" "$data"
+	request_cookie "$method" "$url" "$data"
 }

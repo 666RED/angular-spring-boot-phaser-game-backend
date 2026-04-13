@@ -35,6 +35,8 @@ public class SecurityConfig {
             auth ->
                 auth.requestMatchers(HttpMethod.POST, "/api/v1/auth/**")
                     .permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/users/**")
+                    .permitAll()
                     .requestMatchers("/error") // note: for showing error in curl
                     .permitAll()
                     // .requestMatchers(HttpMethod.GET, "/api/v1/users/**") // todo: may uncomment

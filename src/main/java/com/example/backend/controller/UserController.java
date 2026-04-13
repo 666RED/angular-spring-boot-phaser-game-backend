@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
   private final UserService userService;
 
-  @GetMapping
+  @GetMapping("/me")
   public ResponseEntity<UserDto> getUser(@AuthenticationPrincipal CustomUserDetails userDetails) {
     if (userDetails == null) {
       throw new BadCredentialsException("Not authenticated");

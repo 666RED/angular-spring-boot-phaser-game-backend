@@ -3,6 +3,7 @@ package com.example.backend.security;
 import com.example.backend.service.auth.AuthenticationService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -47,10 +48,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   }
 
   private String extractToken(HttpServletRequest request) {
-    String bearerToken = request.getHeader("Authorization");
+    if (request.getCookies() == null) return null;
 
-    if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-      return bearerToken.substring(7);
+    for (Cookie cookie : request.getCookies()) {
+      if ("jwt".equals(cookie.getName())) {
+        return cookie.getValue();
+      }
     }
 
     return null;
