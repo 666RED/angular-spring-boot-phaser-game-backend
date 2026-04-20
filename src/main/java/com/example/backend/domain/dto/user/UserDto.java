@@ -11,9 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDto {
+  private Long id;
   private String name;
 
-  // todo: may user this later
+  // todo: may use this later
   // private String email; // note: Used as username in Spring Security
   // private String provider;
   // private String providerId;

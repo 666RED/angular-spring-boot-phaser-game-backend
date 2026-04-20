@@ -39,8 +39,8 @@ public class SecurityConfig {
                     .permitAll()
                     .requestMatchers("/error") // note: for showing error in curl
                     .permitAll()
-                    // .requestMatchers(HttpMethod.GET, "/api/v1/users/**") // todo: may uncomment
-                    // .permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/users/**")
+                    .permitAll()
                     .requestMatchers("/websocket/**") // note: For websocket connection
                     .permitAll()
                     .anyRequest()

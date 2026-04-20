@@ -1,7 +1,10 @@
-package com.example.backend.domain.entity.redis.game;
+package com.example.backend.domain.response.websocket.ticTacToe;
 
 import java.util.List;
 import java.util.Map;
+
+import com.example.backend.domain.entity.redis.ticTacToe.TicTacToeGameStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,13 +14,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class GameState {
+public class MakeMoveResponse {
+	private TicTacToeGameStatus status;
   private List<String> currentBoard;
   private Long currentTurnPlayerId;
   private int turnCount;
-  private Map<String, Integer> scores;
-  private GameStatus status;
   private Long winnerId;
-  private Long lastMoveTimestamp; // to kick AFK players
-  private Long gameStartTime;
+  private Map<Long, Integer> winRounds;
 }
